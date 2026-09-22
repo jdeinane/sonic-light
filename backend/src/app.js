@@ -17,7 +17,7 @@ export function createApp(db, { adminUsername = 'admin' } = {}) {
 	app.post('/api/login', (req, res) => {
 		const username = normalizeUsername(req.body?.username);
 		if (!username)
-			return res.status(400).json({ error: 'Invalid username (must be between 1 to 32 characters).'});
+			return res.status(400).json({ error: 'Invalid username (1 to 32 characters: letters, numbers, spaces, . _ -).'});
 
 		const user = db.findOrCreateUser(username);
 		res.json({ username: user.username, isAdmin: isAdmin(user.username) });
