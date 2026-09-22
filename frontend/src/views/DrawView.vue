@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import DrawingCanvas from '../components/DrawingCanvas.vue';
+import PlayButton from '../components/PlayButton.vue';
 import { api } from '../api';
 import { clearSession, session } from '../session';
 
@@ -77,6 +78,7 @@ function logout() {
 				<button type="button" :disabled="saving" @click="save">
 					{{ saving ? 'Saving…' : 'Save' }}
 				</button>
+				<PlayButton :strokes="strokes" />
 			</div>
 
 			<DrawingCanvas v-model:strokes="strokes" :color="color" :line-width="lineWidth" />

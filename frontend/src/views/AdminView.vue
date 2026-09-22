@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import DrawingCanvas from '../components/DrawingCanvas.vue';
+import PlayButton from '../components/PlayButton.vue';
 import { api } from '../api';
 import { clearSession } from '../session';
 
@@ -52,6 +53,7 @@ function logout() {
 					{{ item.drawing.strokes.length }} strokes ·
 					{{ new Date(item.updatedAt).toLocaleString() }}
 				</p>
+				<PlayButton :strokes="item.drawing.strokes" />
 			</li>
 		</ul>
 	</main>
